@@ -52,6 +52,9 @@ while True:
     elif esc == 2:
         if len(soldados) == 27:
             # função de distribuição de nomes por lista
+            h1.clear()
+            h2.clear()
+            h3.clear()
             while len(h1) < 9:
                 s = random.choice(soldados)
                 if (s not in h1) and (s not in h2) and (s not in h3):
