@@ -1,0 +1,161 @@
+#importar modulos de aleatoriedade
+import random
+import datetime
+
+# criar as listas separadas
+import time
+
+soldados = []
+h1 = []
+h2 = []
+h3 = []
+s = 0
+nome = ''
+esc = 5
+
+
+def substituir(pos, no):
+    soldados[pos-1] = no
+
+
+while True:
+
+    #inserir 27 nomes na lista soldados
+    print('='*48)
+    print(f'{"Distribuição de Turnos e Setores":^48}')
+    print('='*48)
+
+    print("1 - Inserir os nomes")
+    print("2 - Gerar lista de distribuição")
+    print("3 - Substituir nomes")
+    print("4 - Mostrar listagem")
+    print("0 - Fechar o programa")
+    esc = int(input("> "))
+
+#Inserção dos nomes
+    if esc == 1:
+
+        soldados.clear()
+        print('Digite os nomes dos soldados.')
+        for n in range(1, 28):
+            # soldados.append(n)
+            nome = (input(str(f'{n}° Nome: ')).strip())
+            while True:
+                if nome not in soldados:
+                    soldados.append(nome)
+                    break
+                else:
+                    print('Nome já existe na listagem. Digite novamente')
+                    nome = (input(str(f'{n}° Nome: ')).strip())
+
+#Gerar listagem aleatória
+    elif esc == 2:
+        if len(soldados) == 27:
+            # função de distribuição de nomes por lista
+            while len(h1) < 9:
+                s = random.choice(soldados)
+                if (s not in h1) and (s not in h2) and (s not in h3):
+                    h1.append(s)
+
+            while len(h2) < 9:
+                s = random.choice(soldados)
+                if (s not in h1) and (s not in h2) and (s not in h3):
+                    h2.append(s)
+
+            while len(h3) < 9:
+                s = random.choice(soldados)
+                if (s not in h1) and (s not in h2) and (s not in h3):
+                    h3.append(s)
+#imprimindo ordem
+            print(f'\nPrimeiro Grupo')
+            print(f'Primeiro turno:')
+            for n, y in enumerate(h1):
+                print(f'Posto n{n + 1}:', y, end=' | ')
+            random.shuffle(h1)
+            print(f'\nSegundo turno:')
+            for n, y in enumerate(h1):
+                print(f'Posto n{n + 1}:', y, end=' | ')
+            random.shuffle(h1)
+            print(f'\nTerceiro turno:')
+            for n, y in enumerate(h1):
+                print(f'Posto n{n + 1}:', y, end=' | ')
+            random.shuffle(h1)
+            print(f'\nQuarto turno:')
+            for n, y in enumerate(h1):
+                print(f'Posto n{n + 1}:', y, end=' | ')
+            print(f'\n')
+            print('--'*50)
+            print(f'\nSegundo Grupo')
+            print(f'Primeiro turno')
+            for n, y in enumerate(h2):
+                print(f'Posto n{n + 1}:', y, end=' | ')
+            random.shuffle(h2)
+            print(f'\nSegundo turno')
+            for n, y in enumerate(h2):
+                print(f'Posto n{n + 1}:', y, end=' | ')
+            random.shuffle(h2)
+            print(f'\nTerceiro turno')
+            for n, y in enumerate(h2):
+                print(f'Posto n{n + 1}:', y, end=' | ')
+            random.shuffle(h2)
+            print(f'\nQuarto turno')
+            for n, y in enumerate(h2):
+                print(f'Posto n{n + 1}:', y, end=' | ')
+            print(f'\n')
+            print('--' * 50)
+            print(f'\nTerceiro Grupo')
+            print(f'Primeiro turno')
+            for n, y in enumerate(h3):
+                print(f'Posto n{n + 1}:', y, end=' | ')
+            random.shuffle(h3)
+            print(f'\nSegundo turno')
+            for n, y in enumerate(h3):
+                print(f'Posto n{n + 1}:', y, end=' | ')
+            random.shuffle(h3)
+            print(f'\nTerceiro turno')
+            for n, y in enumerate(h3):
+                print(f'Posto n{n + 1}:', y, end=' | ')
+            random.shuffle(h3)
+            print(f'\nQuarto turno')
+            for n, y in enumerate(h3):
+                print(f'Posto n{n + 1}:', y, end=' | ')
+            print(f'\n')
+            print(f'\nData: {datetime.date.today()}')
+        else:
+            print("Listagem incompleta. Favor preencher todas as posições.")
+
+#Substituir nomes na lista
+    elif esc == 3:
+        if len(soldados) == 27:
+            pos = int(input("Digite a posição a ser substituida: "))
+            no = input("Digite o novo nome: ")
+            substituir(pos, no)
+        else:
+            print("Listagem incompleta. Favor preencher todas as posições.")
+
+#Mostrando a lista de posições
+    elif esc == 4:
+        if len(soldados) == 27:
+            print(f'\n')
+            print('=' * 48)
+            print(f'Listagem de posição')
+            print('=' * 48)
+            for n, y in enumerate(soldados):
+                print(f'posição {n + 1}:', y)
+        else:
+            print("Listagem incompleta. Favor preencher todas as posições.")
+
+#finalizando programa
+    elif esc == 0:
+        break
+
+#opção invalida
+    else:
+        print(f"\nSelecione a opção desejada.")
+
+print("\nEncerrando programa...")
+time.sleep(1)
+print("\nEncerrando programa..")
+time.sleep(1)
+print("\nEncerrando programa.")
+time.sleep(1)
