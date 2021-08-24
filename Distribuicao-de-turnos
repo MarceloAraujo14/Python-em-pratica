@@ -2,11 +2,13 @@
 import random
 import datetime
 import time
+import pandas as pd
 
 # criar as listas separadas
 
 
 soldados = []
+soldlista = pd.read_excel('Nomes.xlsx')
 postos = ['Portão das Armas', 'Cancela', 'Valão', 'Paiol', 'Portão Vila/Sgt', 'PCL', 'Portão Lateral', 'Guarita PPM', 'Garagem']
 h1 = []
 h2 = []
@@ -27,7 +29,7 @@ while True:
     #inserir 27 nomes na lista soldados
     print(f'\n')
     print('='*48)
-    print(f'{"Distribuição de Turnos e Setores vs1.5":^48}')
+    print(f'{"Distribuição de Turnos e Setores vs1.7":^48}')
     print('='*48)
 
     print(f"\nSelecione a opção desejada e pressione Enter.")
@@ -35,6 +37,7 @@ while True:
     print("2 - Gerar lista de distribuição")
     print("3 - Substituir nomes")
     print("4 - Mostrar listagem")
+    print("5 - Carregar arquivo com nomes")
     print("0 - Fechar o programa")
     esc = input("> ")
 
@@ -167,6 +170,14 @@ while True:
                 print(f'posição {n + 1}:', y)
         else:
             print('Listagem vazia....')
+
+# Inserção dos nomes atraves do xml
+    elif esc == '5':
+
+        soldados.clear()
+        for n in range(0, 27):
+            nome = soldlista['Nomes'] [n]
+            soldados.append(nome)
 
 
 #finalizando programa
